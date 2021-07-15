@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1>Competiciones</h1>
+  <ion-list>
+    <ion-title> EuroCopa</ion-title>
+    <div *ngFor="let partido of partidos" [routerLink]="['./', partido.id]">
+      <ion-item *ngIf="partido.competetition === 'EuroCopa'">
+        <ion-text> {{partido.team1}} </ion-text>
+        <ion-avatar>
+          <ion-img [src]="partido.imgteam1"></ion-img>
+        </ion-avatar>
+        <ion-avatar>
+          <ion-img [src]="partido.imgteam2"></ion-img>
+        </ion-avatar>
+        <ion-text> {{partido.team2}} </ion-text>
+        <ion-label>{{partido.title}}</ion-label>
+      </ion-item>
+    </div>
+
+    <ion-title> Copa America</ion-title>
+    <div *ngFor="let partido of partidos" [routerLink]="['./', partido.id]">
+      <ion-item *ngIf="partido.competetition === 'Copa America'">
+        <ion-text> {{partido.team1}} </ion-text>
+        <ion-avatar>
+          <ion-img [src]="partido.imgteam1"></ion-img>
+        </ion-avatar>
+        <ion-avatar>
+          <ion-img [src]="partido.imgteam2"></ion-img>
+        </ion-avatar>
+        <ion-text> {{partido.team2}}</ion-text>
+        <ion-text> {{partido.title}}</ion-text>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>
