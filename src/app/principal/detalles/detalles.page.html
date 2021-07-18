@@ -37,9 +37,18 @@
         </h5>
       </ion-col>
       <ion-col size=1>
-        <h5 class="ion-text-center">
-          {{partido.marcador}}
-        </h5>
+        <div *ngIf="!partido.finalizado; else elseColor">
+          <ion-text color="success">
+            <h5 class="ion-text-center" >
+              {{partido.marcador}}
+            </h5>
+          </ion-text>
+        </div>
+        <ng-template #elseColor>
+          <h5 class="ion-text-center">
+            {{partido.marcador}}
+          </h5>
+        </ng-template>
       </ion-col>
       <ion-col class="ion-float-left">
         <h5 class="ion-float-left">
@@ -54,11 +63,20 @@
         </ion-avatar>
       </ion-col>
       <ion-col size=1>
-        <div class="ion-text-center">
-          {{partido.tiempo}}
+        <div class="ion-text-center" *ngIf="!partido.finalizado; else elseColorTime">
+          <ion-text color="success">
+            <h5 class="ion-text-center" >
+              {{partido.tiempo}}
+            </h5>
+          </ion-text>
         </div>
+          <ng-template #elseColorTime>
+            <h5 class="ion-text-center">
+              {{partido.tiempo}}
+            </h5>
+          </ng-template>
         <div *ngIf="!partido.finalizado; else elseBlock">
-          <ion-progress-bar type="indeterminate"></ion-progress-bar>
+          <ion-progress-bar type="indeterminate" color="success"></ion-progress-bar>
         </div>
         <ng-template #elseBlock>
           <ion-progress-bar value="1" color="dark"></ion-progress-bar>
@@ -80,21 +98,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="tab1">
-        <ion-icon name="triangle"></ion-icon>
-        <ion-label>Resumen </ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="tab2">
-        <ion-icon name="ellipse"></ion-icon>
-        <ion-label>Alineaciones</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-
 </ion-content>
